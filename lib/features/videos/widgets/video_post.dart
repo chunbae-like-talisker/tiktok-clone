@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
@@ -46,8 +47,11 @@ class _VideoPostState extends State<VideoPost>
     );
     await _videoPlayerController.initialize();
     await _videoPlayerController.setLooping(true);
-    setState(() {});
+    if (kIsWeb) {
+      await _videoPlayerController.setVolume(0);
+    }
     _videoPlayerController.addListener(_onVideoChange);
+    setState(() {});
   }
 
   @override
@@ -114,6 +118,8 @@ class _VideoPostState extends State<VideoPost>
     );
     _onTogglePause();
   }
+
+  void _onSoundsTap() {}
 
   @override
   Widget build(BuildContext context) {
@@ -197,6 +203,13 @@ class _VideoPostState extends State<VideoPost>
             right: 10,
             child: Column(
               children: [
+                GestureDetector(
+                  onTap: () => _onCommentsTap(context),
+                  child: VideoButton(
+                    icon: FontAwesomeIcons.solidComment,
+                    text: "33K",
+                  ),
+                ),
                 CircleAvatar(
                   radius: 25,
                   backgroundColor: Colors.black,
