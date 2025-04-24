@@ -119,7 +119,12 @@ class _VideoPostState extends State<VideoPost>
     _onTogglePause();
   }
 
-  void _onSoundsTap() {}
+  void _onSoundsTap() {
+    _videoPlayerController.setVolume(
+      _videoPlayerController.value.volume > 0 ? 0 : 1,
+    );
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -205,9 +210,14 @@ class _VideoPostState extends State<VideoPost>
               children: [
                 GestureDetector(
                   onTap: () => _onCommentsTap(context),
-                  child: VideoButton(
-                    icon: FontAwesomeIcons.solidComment,
-                    text: "33K",
+                  child: IconButton(
+                    onPressed: _onSoundsTap,
+                    icon: FaIcon(
+                      _videoPlayerController.value.volume > 0
+                          ? FontAwesomeIcons.volumeHigh
+                          : FontAwesomeIcons.volumeXmark,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 CircleAvatar(
