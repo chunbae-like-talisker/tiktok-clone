@@ -3,6 +3,7 @@ import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
 import 'package:tiktok_clone/features/onboarding/tutorial_screen.dart';
 import 'package:tiktok_clone/features/onboarding/widgets/interest_button.dart';
+import 'package:tiktok_clone/utils.dart';
 
 class InterestsScreen extends StatefulWidget {
   const InterestsScreen({super.key});
@@ -94,6 +95,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: isDarkMode(context) ? Colors.black : Colors.white,
         title: AnimatedOpacity(
           opacity: _showTitle ? 1 : 0,
           duration: Duration(milliseconds: 300),
@@ -140,8 +142,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        elevation: 2,
+      bottomNavigationBar: Padding(
         padding: EdgeInsets.only(
           bottom: Sizes.size40,
           top: Sizes.size16,
@@ -151,7 +152,7 @@ class _InterestsScreenState extends State<InterestsScreen> {
         child: GestureDetector(
           onTap: _onNextTap,
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: Sizes.size20),
+            padding: EdgeInsets.symmetric(vertical: Sizes.size16 + Sizes.size2),
             decoration: BoxDecoration(color: Theme.of(context).primaryColor),
             child: Text(
               "Next",

@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tiktok_clone/constants/breakpoints.dart';
 import 'package:tiktok_clone/constants/gaps.dart';
 import 'package:tiktok_clone/constants/sizes.dart';
+import 'package:tiktok_clone/utils.dart';
 
 final tabs = ["Top", "Users", "Videos", "Sounds", "LIVE", "Shopping", "Brands"];
 
@@ -91,7 +92,6 @@ class _DiscoverScreenState extends State<DiscoverScreen>
                           borderSide: BorderSide.none,
                         ),
                         filled: true,
-                        fillColor: Colors.grey.shade200,
                         contentPadding: EdgeInsets.symmetric(
                           horizontal: Sizes.size12,
                         ),
@@ -100,7 +100,10 @@ class _DiscoverScreenState extends State<DiscoverScreen>
                           children: [
                             FaIcon(
                               FontAwesomeIcons.magnifyingGlass,
-                              color: Colors.black,
+                              color:
+                                  isDarkMode(context)
+                                      ? Colors.white
+                                      : Colors.black,
                             ),
                           ],
                         ),
@@ -112,7 +115,10 @@ class _DiscoverScreenState extends State<DiscoverScreen>
                                 onTap: _clearWriting,
                                 child: FaIcon(
                                   FontAwesomeIcons.deleteLeft,
-                                  color: Colors.grey.shade600,
+                                  color:
+                                      isDarkMode(context)
+                                          ? Colors.white
+                                          : Colors.grey.shade600,
                                 ),
                               ),
                           ],
@@ -134,9 +140,6 @@ class _DiscoverScreenState extends State<DiscoverScreen>
                 fontWeight: FontWeight.w600,
                 fontSize: Sizes.size16,
               ),
-              indicatorColor: Colors.black,
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey.shade500,
               tabs: [for (var tab in tabs) Tab(text: tab)],
             ),
           ),
@@ -179,12 +182,13 @@ class _DiscoverScreenState extends State<DiscoverScreen>
                               ),
                               Gaps.v10,
                               Text(
-                                "${constraints.maxWidth} This is a very long caption for my tiktok that im upload jus now currently.",
+                                "This is a very long caption for my tiktok that im upload jus now currently.",
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontSize: Sizes.size16 + Sizes.size2,
                                   fontWeight: FontWeight.bold,
+                                  height: 1.1,
                                 ),
                               ),
                               Gaps.v8,
@@ -192,7 +196,10 @@ class _DiscoverScreenState extends State<DiscoverScreen>
                                   constraints.maxWidth > 250)
                                 DefaultTextStyle(
                                   style: TextStyle(
-                                    color: Colors.grey.shade600,
+                                    color:
+                                        isDarkMode(context)
+                                            ? Colors.grey.shade300
+                                            : Colors.grey.shade600,
                                     fontWeight: FontWeight.w600,
                                   ),
                                   child: Row(

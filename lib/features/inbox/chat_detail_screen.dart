@@ -44,9 +44,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     return GestureDetector(
       onTap: _onScaffoldTap,
       child: Scaffold(
-        backgroundColor: Colors.grey.shade100,
         appBar: AppBar(
-          backgroundColor: Colors.grey.shade100,
           title: ListTile(
             contentPadding: EdgeInsets.zero,
             horizontalTitleGap: Sizes.size8,
